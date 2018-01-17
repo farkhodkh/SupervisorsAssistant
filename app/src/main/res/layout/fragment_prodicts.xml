@@ -4,9 +4,11 @@
     android:layout_height="match_parent"
     tools:context="ru.haknazarovfarkhod.supervisorsassistant.ProdictsFragment">
 
-    <LinearLayout
-        android:id="@+id/productsLinearLayout"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/products_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
 </FrameLayout>
