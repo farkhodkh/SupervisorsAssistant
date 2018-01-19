@@ -1,22 +1,17 @@
 package ru.haknazarovfarkhod.supervisorsassistant;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ru.haknazarovfarkhod.supervisorsassistant.DBControlers.DatabaseHelper;
@@ -79,9 +74,10 @@ public class ProdictsFragment extends Fragment {
         try {
             db = sqlHelper.open();
             productCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE, null);
+
             String[] headers = new String[]{DatabaseHelper.COLUMN_productName, DatabaseHelper.COLUMN_articleNumber};
-            productListAdapter = new ProductListAdapter(this, android.R.layout.two_line_list_item,
-                    productCursor, headers, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+
+            //productListAdapter = new ProductListAdapter(getContext(), android.R.layout.two_line_list_item, );
 //
 //            // если в текстовом поле есть текст, выполняем фильтрацию
 //            // данная проверка нужна при переходе от одной ориентации экрана к другой
@@ -120,14 +116,14 @@ public class ProdictsFragment extends Fragment {
             productsList.setAdapter(productListAdapter);
         }
         catch (SQLException ex){}
-    }
+    //}
     }
 
     public void setListAdapter(ArrayAdapter<String> listAdapter) {
         this.listAdapter = listAdapter;
     }
 
-    public interface OnFragmentInteractionListener {
+    interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
 }
