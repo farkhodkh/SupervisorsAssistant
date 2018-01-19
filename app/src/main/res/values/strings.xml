@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">SupervisorsAssistant</string>
+    <string name="app_name">Supervisor\'s Assistant'</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="productNameField" >Name</string>
+    <string name="productNameText">Product name</string>
 
 </resources>

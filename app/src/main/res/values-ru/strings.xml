@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ассистент супервайзера</string>
+    <string name="productNameField">Наименование</string>
+    <string name="productNameText">Наименование товара</string>
+</resources>
