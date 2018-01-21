@@ -3,4 +3,8 @@
     <string name="app_name">Ассистент супервайзера</string>
     <string name="productNameField">Наименование</string>
     <string name="productNameText">Наименование товара</string>
+    <string name="newOrderButtonText">Новый заказ</string>
+    <string name="ordersListButtonText">Заказы</string>
+    <string name="productsMatrixButtonText">Товарная матрица</string>
+    <string name="tradeOutletsButtonText">Торговые точки</string>
 </resources>

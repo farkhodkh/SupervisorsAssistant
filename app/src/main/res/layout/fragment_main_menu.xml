@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.haknazarovfarkhod.supervisorsassistant.MainMenu">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/newOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/newOrderButtonText"
+            android:textStyle="bold"
+            android:onClick="onButtonClick"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/ordersListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/ordersListButtonText"
+            android:textStyle="bold"
+            android:onClick="onButtonClick"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/productsMatrixButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/productsMatrixButtonText"
+            android:textStyle="bold"
+            android:onClick="onButtonClick"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/tradeOutletsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/tradeOutletsButtonText"
+            android:textStyle="bold"
+            android:onClick="onButtonClick"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</FrameLayout>

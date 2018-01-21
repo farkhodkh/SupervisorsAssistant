@@ -3,36 +3,40 @@ package ru.haknazarovfarkhod.supervisorsassistant;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import ru.haknazarovfarkhod.supervisorsassistant.DBControlers.Products.Product;
 
-public class MainActivity extends AppCompatActivity {
-    public static final String MAINMENY_FRAGMENT_TAG = "mainMenu_fragment";
-    public static final String PRODUCTS_FRAGMENT_TAG = "products_fragment";
+public class MainMenu extends Fragment {
+    private OnFragmentInteractionListener mListener;
 
     private ProductsFragment productsFragment;
-
     private Button newOrderButton;
     private Button ordersListButton;
     private Button productsMatrixButton;
     private Button tradeOutletsButton;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public MainMenu() {
+
     }
 
     @Override
-    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-        newOrderButton = findViewById(R.id.newOrderButton);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
+        //productsFragment = new ProductsFragment();
+
+        newOrderButton = view.findViewById(R.id.newOrderButton);
         newOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,21 +44,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ordersListButton = findViewById(R.id.ordersListButton);
+        ordersListButton = view.findViewById(R.id.ordersListButton);
         ordersListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(v);
             }
         });
-        productsMatrixButton = findViewById(R.id.productsMatrixButton);
+        productsMatrixButton = view.findViewById(R.id.productsMatrixButton);
         productsMatrixButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(v);
             }
         });
-        tradeOutletsButton = findViewById(R.id.tradeOutletsButton);
+        tradeOutletsButton = view.findViewById(R.id.tradeOutletsButton);
         tradeOutletsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,14 +66,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        return view;
+    }
 
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager
-//                .beginTransaction()
-//                .add(R.id.mainActivity_ConstraintLayout, new MainMenu(), MAINMENY_FRAGMENT_TAG)
-//                .addToBackStack(null)
-//                .commit();
-        return super.onCreateView(parent, name, context, attrs);
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
 
     void onButtonClick(View view) {
@@ -90,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
                     .remove(currentFragment)
                     .commit();
         }
-
-        productsFragment = new ProductsFragment();
-
         fragmentManager
                 .beginTransaction()
                 .add(R.id.mainActivity_ConstraintLayout, productsFragment, MainActivity.PRODUCTS_FRAGMENT_TAG)
